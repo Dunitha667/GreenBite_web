@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBite - Home</title>
+    <meta name="description" content="GreenBite helps you eat well, live well with healthy recipes, workout plans, and nutrition tips.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    <script src="JS.js"></script>
+
+    <!-- Nav BAR Start -->		
+    <nav class="navbar">
+      <div class="logo">
+        <a href="Index.html">
+          <img src="images/GreenBite.png" alt="GreenBite Logo">
+        </a>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="Index.html" class="active">Home</a></li>
+        <li><a href="Healthy-Recipes.html">Healthy Recipes</a></li>
+        <li><a href="Calorie-&-Nutrition-Calculator.html">Calorie & Nutrition Calculator</a></li>
+        <li><a href="Workout-Generator.html">Workout Generator</a></li>
+        <li><a href="Mindfulness.html">Mindfulness</a></li>
+        <li><a href="Contact-&-Feedback.html">Contact & Feedback</a></li>
+      </ul>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </nav>
+    <!-- Nav BAR End -->
+
+    <!-- Hero Section Start -->
+      <section class="hero">
+        <h1 id="slogan">Eat Healthy, Live Longer</h1>
+        <p id="health-tip"></p>
+      </section>
+    <!-- Hero Section End -->
+
+    <!-- Featured Section Start -->
+      <section class="featured">
+        <h2>Explore Healthy Living</h2>
+        <div class="featured-cards">
+          <div class="card">
+            <a href="Healthy-Recipes.html">
+              <img src="images/recipe.jpeg" alt="Healthy Recipe">
+              <h3>Healthy Recipes</h3>
+              <p>Discover quick and nutritious meal ideas.</p>
+            </a>
+          </div>
+        
+        <div class="card">
+          <a href="Calorie-&-Nutrition-Calculator.html">
+            <img src="images/calorie.jpg" alt="Calorie & Nutrition Calculator">
+            <h3>Calorie & Nutrition Calculator</h3>
+            <p>Track your calories and get nutrition insights.</p>
+          </a>
+        </div>
+
+        <div class="card">
+            <a href="Workout-Generator.html">
+              <img src="images/workout.jpg" alt="Workout">
+              <h3>Workout Generator</h3>
+              <p>Stay active with personalized workouts.</p>
+            </a>
+        </div>
+
+          <div class="card">
+            <a href="Mindfulness.html">
+              <img src="images/mindfulness.jpg" alt="Mindfulness">
+              <h3>Mindfulness</h3>
+              <p>Boost your mental health with guided practices.</p>
+            </a>
+          </div>
+
+          <div class="card">
+          <a href="Contact-&-Feedback.html">
+            <img src="images/contact.jpg" alt="Contact & Feedback">
+            <h3>Contact & Feedback</h3>
+            <p>Get in touch or share your feedback with us.</p>
+          </a>
+        </div>
+        </div>
+      </section>
+    <!-- Featured Section End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <form id="newsletter-form">
+        <h3>Subscribe to our Newsletter</h3>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <!-- Newsletter Popup -->
+      <div id="newsletter-popup" class="popup">
+        <p>Thank you for subscribing!</p>
+      </div>
+
+      <p class="copyright">
+        &copy; 2025 GreenBite. All Rights Reserved.
+    </p>
+    </footer>
+    <!-- Footer End -->
+
+  </body>
+</html>

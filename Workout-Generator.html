@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBite - Workout Generator</title>
+    <meta name="description" content="Generate personalized workouts for different body parts and equipment with GreenBite's Workout Generator.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    <script src="JS.js"></script>
+
+    <!-- Nav BAR Start -->		
+    <nav class="navbar">
+      <div class="logo">
+        <a href="Index.html">
+          <img src="images/GreenBite.png" alt="GreenBite Logo">
+        </a>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="Healthy-Recipes.html">Healthy Recipes</a></li>
+        <li><a href="Calorie-&-Nutrition-Calculator.html">Calorie & Nutrition Calculator</a></li>
+        <li><a href="Workout-Generator.html" class="active">Workout Generator</a></li>
+        <li><a href="Mindfulness.html">Mindfulness</a></li>
+        <li><a href="Contact-&-Feedback.html">Contact & Feedback</a></li>
+      </ul>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </nav>
+    <!-- Nav BAR End -->
+
+    <!-- Workout Calculator Start -->
+    <main>
+      <section class="photo-slider">
+        <h1>Workout Inspirations</h1>
+        <div class="slider-container">
+          <div class="slides">
+            <img src="images/workoutslide1.webp" alt="Workout 1">
+            <img src="images/workoutslide2.webp" alt="Workout 2">
+            <img src="images/workoutslide3.jpg" alt="Workout 3">
+            <img src="images/workoutslide4.jpg" alt="Workout 4">
+            <img src="images/workoutslide5.jpg" alt="Workout 5">
+            <img src="images/workoutslide6.jpg" alt="Workout 6">
+          </div>
+        </div>
+      </section>
+
+
+      <section class="workout-generator">
+          <h1>Workout Generator</h1><br>
+          <form id="workout-form">
+            <label for="body-part">Select Body Part:</label>
+            <select id="body-part" name="body-part" required>
+              <option value="">Choose</option>
+              <option value="arms">Arms</option>
+              <option value="legs">Legs</option>
+              <option value="core">Core</option>
+              <option value="full-body">Full Body</option>
+      </select>
+
+          <label for="equipment">Select Equipment:</label>
+          <select id="equipment" name="equipment" required>
+            <option value="">Choose</option>
+            <option value="none">None</option>
+            <option value="dumbbells">Dumbbells</option>
+            <option value="resistance-band">Resistance Band</option>
+            <option value="barbell">Barbell</option>
+          </select>
+
+            <button type="submit">Generate Workout</button>
+          </form>
+
+        <div id="workout-plan" style="display:none;">
+          <h2>Your Workout Plan</h2>
+          <ul id="exercise-list"></ul>
+        </div>
+
+        <div id="timer-section" style="display:none;">
+          <h3>Current Exercise:</h3>
+          <p id="timer-exercise"></p>
+          <h3>Timer: <span id="timer">00:30</span></h3>
+          <button id="start-timer-btn">Start Timer</button>
+        </div>
+      </section>
+    </main>
+    <!-- Workout Calculator End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <form id="newsletter-form">
+        <h3>Subscribe to our Newsletter</h3>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <!-- Newsletter Popup -->
+      <div id="newsletter-popup" class="popup">
+        <p>Thank you for subscribing!</p>
+      </div>
+
+      <p class="copyright">
+        &copy; 2025 GreenBite. All Rights Reserved.
+    </p>
+    </footer>
+    <!-- Footer End -->
+
+  </body>
+</html>

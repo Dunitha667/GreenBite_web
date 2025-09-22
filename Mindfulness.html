@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBite - Mindfulness</title>
+    <meta name="description" content="Practice mindfulness and breathing exercises with timers and ambient sounds on GreenBite.">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <script src="JS.js"></script>
+
+    <!-- Nav BAR Start -->		
+    <nav class="navbar">
+      <div class="logo">
+        <a href="Index.html">
+          <img src="images/GreenBite.png" alt="GreenBite Logo">
+        </a>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="Healthy-Recipes.html">Healthy Recipes</a></li>
+        <li><a href="Calorie-&-Nutrition-Calculator.html">Calorie & Nutrition Calculator</a></li>
+        <li><a href="Workout-Generator.html">Workout Generator</a></li>
+        <li><a href="Mindfulness.html" class="active">Mindfulness</a></li>
+        <li><a href="Contact-&-Feedback.html">Contact & Feedback</a></li>
+      </ul>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </nav>
+    <!-- Nav BAR End -->
+
+    <!-- Mindfulness Card Start -->
+    <div class="Mindfulness-card">
+      <h1>Mindfulness Meditation</h1>
+
+      <div id="breathing-circle"></div>
+      <p>Follow the breathing circle: Inhale / Exhale</p>
+
+      <div id="mindfulness-timer">05:00</div>
+      <div class="button-group">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+
+      <h2>Ambient Sound</h2>
+      <button id="soundToggle">Play Sound</button>
+      <audio id="ambientSound" loop>
+        <source src="ambient.mp3" type="audio/mpeg">
+      </audio>
+
+      <p id="sessionCount">Completed Sessions: 0</p>
+    </div>
+    <!-- Mindfulness Card End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <form id="newsletter-form">
+        <h3>Subscribe to our Newsletter</h3>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+
+      <!-- Newsletter Popup -->
+      <div id="newsletter-popup" class="popup">
+        <p>Thank you for subscribing!</p>
+      </div>
+    </footer>
+    <!-- Footer End -->
+
+  </body>
+</html>

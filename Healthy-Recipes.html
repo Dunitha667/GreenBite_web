@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBite - Healthy Recipes</title>
+    <meta name="description" content="Explore healthy recipes with ingredients, steps, and nutrition info at GreenBite.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    <script src="JS.js"></script>
+
+    <!-- Nav BAR Start -->		
+    <nav class="navbar">
+      <div class="logo">
+        <a href="Index.html">
+          <img src="images/GreenBite.png" alt="GreenBite Logo">
+        </a>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="Healthy-Recipes.html" class="active">Healthy Recipes</a></li>
+        <li><a href="Calorie-&-Nutrition-Calculator.html">Calorie & Nutrition Calculator</a></li>
+        <li><a href="Workout-Generator.html">Workout Generator</a></li>
+        <li><a href="Mindfulness.html">Mindfulness</a></li>
+        <li><a href="Contact-&-Feedback.html">Contact & Feedback</a></li>
+      </ul>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle Navigation Menu">☰</button>
+    </nav>
+    <!-- Nav BAR End -->
+
+    <!-- Search & Filter Section -->
+    <section class="recipe-filters">
+      <h2 class="visually-hidden">Search and Filter Recipes</h2>
+      <input type="text" id="searchBar" placeholder="Search recipes...">
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Snacks">Snacks</option>
+      </select>
+    </section>
+
+
+    <!-- Recipe Cards Container -->
+    <section class="recipe-cards" id="recipeContainer">
+      <h2 class="visually-hidden">Recipe List</h2>
+    </section>
+
+    <!-- Recipe Modal Start -->
+    <div id="recipeModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <h2 id="modalTitle">Recipe Title</h2>
+        <img id="modalImage" src="images/placeholder.png" alt="Recipe Image">
+        
+        <h3>Ingredients</h3>
+        <ul id="modalIngredients"></ul>
+        
+        <h3>Steps</h3>
+        <ol id="modalSteps"></ol>
+        
+        <h3>Nutrition Info</h3>
+        <table id="modalNutrition"></table>
+      </div>
+    </div>
+    <!-- Recipe Modal End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <form id="newsletter-form">
+        <h3>Subscribe to our Newsletter</h3>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <!-- Newsletter Popup -->
+      <div id="newsletter-popup" class="popup">
+        <p>Thank you for subscribing!</p>
+      </div>
+
+      <p class="copyright">
+        &copy; 2025 GreenBite. All Rights Reserved.
+    </p>
+    </footer>
+    <!-- Footer End -->
+
+
+  </body>
+</html>

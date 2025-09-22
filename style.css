@@ -1,0 +1,964 @@
+/* --- RESET --- */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body {
+  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
+  font-family: Verdana, sans-serif;
+  background-color: #4E7C57;
+}
+
+/* --- VARIABLES --- */
+:root {
+  --color-primary: #059212;
+  --color-secondary: #21867a;
+  --transition-speed: 0.3s;
+  --border-radius: 6px;
+  --card-radius: 12px;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222831;
+  padding: 10px 20px;
+  gap: 20px;
+  position: relative;
+}
+
+.logo img {
+  height: 70px;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+.nav-links li a {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  text-decoration: none;
+  font-size: 19px;
+  padding: 6px 10px;
+  border-radius: var(--border-radius);
+  white-space: nowrap;
+  transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color:#059212;
+  transform: scale(1.05);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url('images/healthy-food.jpeg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+.hero h1, .hero p {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: #ddd;
+  animation: fadeIn 2s ease;
+}
+
+/* --- FEATURED / RECIPE CARDS --- */
+.featured-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.featured {
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
+  background: #4E7C57;
+}
+
+.featured h2 {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color:white;
+}
+
+.card, .recipe-card {
+  width: 100%;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  background: #D9E9CF;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 12px rgba(211, 101, 101, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card:hover, .recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.card img, .recipe-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card h3, .recipe-card h3 {
+  margin: 10px 0 8px;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.card p, .recipe-card p {
+  padding: 0 8px 15px;
+  font-size: 0.85rem;
+  color: #555;
+  flex-grow: 1;
+}
+
+/* --- RECIPE FILTERS --- */
+.recipe-filters {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-content: space-between; 
+  gap: 15px;
+  padding: 30px 20px;
+  background: #4E7C57;
+  border-radius: 12px;
+}
+
+.recipe-filters input,
+.recipe-filters select {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  width: 300px;
+}
+
+/* --- RECIPE CARDS GRID --- */
+.recipe-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+
+/* --- MODAL --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #D9E9CF;
+  padding: 25px;
+  border-radius: var(--card-radius);
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 300px;
+  height: 350px;
+  margin: 15px 0;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-content h3 {
+  margin-top: 20px;
+  color: black;
+}
+
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.modal-content table,
+.modal-content th,
+.modal-content td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  padding: 5px 5px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+.close-btn:hover {
+  color: #fff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+#modalNutrition {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#modalNutrition th,
+#modalNutrition td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+
+/* --- CALCULATOR --- */
+
+.calculator {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #D9E9CF;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+.calculator label {
+  display: block;
+  margin-top: 10px;
+}
+
+.calculator input, .calculator select, .calculator button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.calc-result {
+  margin-top: 20px;
+}
+
+.macro {
+  margin-bottom: 10px;
+}
+
+.progress {
+  width: 100%;
+  height: 15px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar {
+  height: 100%;
+  width: 0%;
+  background: #4caf50;
+  transition: width 1s ease;
+}
+
+.calculator h2 {
+  text-align: center;
+  color:#556B2F;
+  margin-bottom: 20px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size:25px;
+}
+
+.calculator form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.calculator label {
+  font-weight: bold;
+}
+
+.calculator input,
+.calculator select,
+.calculator button {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.calculator button {
+  background-color: #059212;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calculator button:hover {
+  background-color: #21867a;
+}
+
+.calc-result {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #04aa6d;
+}
+
+.calc-result h3 {
+  margin-bottom: 10px;
+}
+
+.macro {
+  margin: 10px 0;
+}
+
+.progress {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 20px;
+  margin: 6px 0;
+}
+
+.bar {
+  height: 100%;
+  width: 0;
+  background-color: #04aa6d;
+  border-radius: 20px;
+  transition: width 0.5s ease;
+}
+
+/* --- WORKOUT GENERATOR --- */
+
+/* Slider Section */
+.photo-slider {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.photo-slider h1 {
+  color: white;
+}
+
+.slider-container {
+  max-width: 1000px;
+  height: 650px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  position: relative;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slides img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slides img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Workout Form */
+.workout-generator {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #D9E9CF;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.workout-generator h2, .workout-generator h3 {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+}
+
+.workout-generator h1 {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size:25px;
+  text-align: center;
+  color:#556B2F ;
+}
+
+.workout-generator form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.workout-generator label {
+  font-weight: bold;
+}
+
+.workout-generator select,
+.workout-generator button {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.workout-generator button {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.workout-generator button:hover {
+  background-color: #21867a;
+}
+
+#exercise-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+  color: #333;
+}
+
+#exercise-list li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+#timer-section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+  max-width: 400px;
+}
+
+#timer-section h3 {
+  margin: 10px 0 5px;
+}
+
+#timer-section p#timer-exercise {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#timer-section #timer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #04aa6d;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#timer.animate {
+  transform: scale(1.5);
+  color: #ff4c4c;
+}
+
+#start-timer-btn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #04aa6d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+#start-timer-btn:hover {
+  background-color: #038f5b;
+}
+
+
+/* --- Mindfulness Page --- */
+.Mindfulness-card {
+  background-color: #D9E9CF;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  margin: 50px auto;
+}
+
+.Mindfulness-card h1 {
+  color: #556B2F
+}
+
+
+#breathing-circle {
+  width: 150px;
+  height: 150px;
+  background: #98CD00;
+  border-radius: 50%;
+  margin: 20px auto;
+  transition: transform 4s ease-in-out;
+}
+
+#timer {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.Mindfulness-card button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #98CD00;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.Mindfulness-card button:hover {
+  background-color: #9BEC00
+}
+
+/* --- Contact Form --- */
+form input {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease, transform 0.2s ease;
+}
+
+form select {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease, transform 0.2s ease;
+}
+
+form textarea {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease, transform 0.2s ease;
+}
+
+form button {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease, transform 0.2s ease;
+}
+
+.contact-form input[type="submit"] {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease, transform 0.2s ease;
+  background-color: #059212;
+  color: white;
+  cursor: pointer;
+}
+
+form input:focus, form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  transform: scale(1.02);
+}
+
+form button:hover,
+.contact-form input[type="submit"]:hover {
+  background: #21867a;
+  transform: scale(1.05);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #D9E9CF;
+  padding: 30px;
+  border-radius: var(--card-radius);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.contact-form h2 {
+  text-align: center;
+  color: #556B2F;
+  font-size:30px;
+  margin-bottom: 20px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 6px; 
+  font-weight: bold;
+  color: #333;
+}
+
+form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.confirmation-message {
+  text-align: center;
+  color: green;
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.confirmation-message.show {
+  display: block;
+}
+
+/* --- MAP & FAQ --- */
+.map-container {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.map-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 500px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.faq-section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.faq-section { width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 12px 20px;
+  text-align: left;
+  background-color: #D9E9CF;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color var(--transition-speed);
+}
+
+.faq-answer {
+  display: none;
+  padding: 10px 15px;
+  background: #78C841;
+  border-radius: var(--border-radius);
+  margin-top: 5px;
+}
+
+#feedback-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 15px 25px;
+  border-radius: var(--card-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+#feedback-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- FOOTER --- */
+footer {
+  width: 100%; 
+  text-align: center; 
+  padding: 20px;
+  background-color: #222831; 
+  color: white;
+}
+
+footer form { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+footer h3 { 
+  margin: 0;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+footer input[type="email"] { 
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  border: none; 
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+footer button {
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+footer button:hover {
+  background-color: #03964f;
+}
+
+
+/* Newsletter Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: #78C841;
+  color: black;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.popup.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 2.5rem; }
+  .hero p { font-size: 1.3rem; }
+
+  .recipe-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar responsive */
+  .nav-links {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background-color: #222831;
+    flex-direction: column;
+    width: 220px;
+    padding: 20px;
+    display: none;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.5rem; }
+  .hero p { font-size: 1rem; }
+
+  .recipe-cards {
+    grid-template-columns: 1fr;
+  }
+
+  footer form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  footer input[type="email"],
+  footer button {
+    width: 100%;
+    max-width: none;
+  }
+}
